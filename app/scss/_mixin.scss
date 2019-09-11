@@ -1,0 +1,31 @@
+// for pseudo element
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// for text truncation
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin flexLayout ($justify-property: initial) {
+  display: flex;
+  justify-content: $justify-property;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+@mixin position ($positionValue) {
+  position: #{$positionValue};
+}
+
+@mixin listItem () {
+
+}

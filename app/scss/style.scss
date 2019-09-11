@@ -1,0 +1,48 @@
+@import "variable";
+@import "breakpoints";
+@import "functions";
+@import "mixin";
+@import "grid";
+
+.only-breakpoint {
+  @include media-breakpoint-only(sm){
+    color: rebeccapurple;
+  };
+}
+
+.between-breakpoint {
+  @include media-breakpoint-between(sm , md){
+    color: rebeccapurple;
+  };
+}
+
+.breakpoint-up {
+  @include media-breakpoint-up(sm){
+    color: rebeccapurple;
+  };
+}
+
+.breakpoint-down {
+  @include media-breakpoint-down(xs){
+    color: rebeccapurple;
+  };
+}
+
+.media-breakpoint-only {
+  @include media-breakpoint-only(sm) {
+    color: rebeccapurple;
+  }
+}
+
+.pesudo-element {
+  @include flexLayout();
+  @include position(relative);
+
+  &:before {
+    @include pseudo()
+  }
+}
+
+li {
+  display: inline;
+}
