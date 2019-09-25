@@ -1,8 +1,11 @@
 @import "variable";
 @import "breakpoints";
 @import "functions";
+@import "responsive-font-size";
 @import "mixin";
 @import "grid";
+@import "nav";
+@import "button";
 
 .only-breakpoint {
   @include media-breakpoint-only(sm){
@@ -34,15 +37,15 @@
   }
 }
 
-.pesudo-element {
-  @include flexLayout();
-  @include position(relative);
 
-  &:before {
-    @include pseudo()
-  }
+.flex-center {
+  @include flexLayout(center,center);
 }
 
-li {
-  display: inline;
+.myFont {
+  @include fontSize-fontColor-LineHeight-LetterSpacing(17px, red, 1.5, 2);
+}
+
+.myResponsiveDivForSpacing {
+  @include responsivePadding(15px, 20px, 40px, 50px, 80px)
 }

@@ -1,5 +1,5 @@
 // for pseudo element
-@mixin pseudo($display: block, $pos: absolute, $content: ''){
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
   content: $content;
   display: $display;
   position: $pos;
@@ -13,19 +13,35 @@
   text-overflow: ellipsis;
 }
 
-@mixin flexLayout ($justify-property: initial) {
+@mixin flexLayout($justify-property: initial, $align-property: initial) {
   display: flex;
   justify-content: $justify-property;
+  align-items: $align-property;
 
   & > * {
     flex: 1;
   }
 }
 
-@mixin position ($positionValue) {
-  position: #{$positionValue};
+@mixin fontSize-fontColor-LineHeight-LetterSpacing($font-size: 15px, $color: black, $lineHeight:1, $letterSpacing: initial) {
+  @include font-responsive($font-size, 0);
+  color: $color;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
 }
 
-@mixin listItem () {
-
+@mixin responsivePadding($xs,$sm,$md,$lg,$xl) {
+  padding: $xs;
+  @include media-breakpoint-up(sm) {
+    padding: $sm;
+  }
+  @include media-breakpoint-up(md) {
+    padding: $md;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: $lg;
+  }
+  @include media-breakpoint-up(xl) {
+    padding: $xl;
+  }
 }

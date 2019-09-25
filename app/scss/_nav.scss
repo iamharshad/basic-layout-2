@@ -1,3 +1,10 @@
+$nav-padding : 12px;
+
 nav {
     display: flex;
+
+    a {
+        padding: $nav-padding;
+    }
+
 }

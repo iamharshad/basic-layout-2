@@ -1,0 +1,34 @@
+$enable-rounded-corner : true;
+
+//color
+$btn-color: white;
+$btn-border-color : red;
+//bg-color
+$btn-bg-color: gray;
+//spacing
+$button-padding: 15px 20px;
+
+$btn-radius : 4px;
+$btn-messive-radius : 45px;
+
+@mixin btnRounded ($radius: $btn-radius) {
+  border-radius: $radius;
+}
+
+.btn {
+  border-color: $btn-border-color;
+  padding: $button-padding;
+  background-color: $btn-bg-color;
+  color:$btn-color;
+
+  @if ($enable-rounded-corner) {
+    &--rounded {
+      @include btnRounded ()
+    }
+  }
+
+  &--messive-radius {
+    border-radius: $btn-messive-radius;
+  }
+
+}
