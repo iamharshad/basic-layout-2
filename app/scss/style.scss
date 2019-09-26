@@ -37,15 +37,6 @@
   }
 }
 
-
-.flex-center {
-  @include flexLayout(center,center);
-}
-
-.myFont {
-  @include fontSize-fontColor-LineHeight-LetterSpacing(17px, red, 1.5, 2);
-}
-
-.myResponsiveDivForSpacing {
-  @include responsivePadding(15px, 20px, 40px, 50px, 80px)
+.navigation {
+  @include navigation;
 }
