@@ -1,7 +1,8 @@
 /*
-* Gulp.js for browser reloading and sass compiling
-*  automation for compress/uglify html, css, and js
-* */
+* Author: Harshad Prajapati
+* Gist url : https://gist.github.com/iamharshad/0df647619e7e1ba0045bed0fe4dc2213
+* Description: Gulpfile.js for browser reloading and sass compiling, automation for compress/uglify html, css, and js
+*/
 
 // import required gulp plugin 
 const gulp = require("gulp"),
