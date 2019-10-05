@@ -1,3 +1,9 @@
+/*
+* Gulp.js for browser reloading and sass compiling
+*  automation for compress/uglify html, css, and js
+* */
+
+// import required gulp plugin 
 const gulp = require("gulp"),
     sass = require("gulp-sass"),
     postcss = require("gulp-postcss"),
@@ -14,13 +20,18 @@ const gulp = require("gulp"),
     del = require('del'),
     plumber = require("gulp-plumber");
 
+// define folder name
 let RootFolderName = 'app';
 let RootFolderPath = './' + RootFolderName;
 
+
+// source of javascript used in project
 let jsSrc = [
   RootFolderName+ '/js/main.js',
 ];
 
+
+// function for complie scss and autoprefixer
 function style() {
   return (
       gulp
@@ -28,17 +39,20 @@ function style() {
           .pipe(sourcemaps.init())
           .pipe(sass())
           .on("error", sass.logError)
-          .pipe(sourcemaps.write())
+          .pipe(postcss([ autoprefixer({ browsers: ["> 0%"] }) ]))
+          .pipe(sourcemaps.write('.'))
           .pipe(gulp.dest(RootFolderName + "/css"))
           .pipe(browserSync.stream())
   );
 }
 
+// function for reaload browser
 function reload(cb) {
   browserSync.reload();
   cb();
 }
 
+// function for watch changes of file for html, css and javascript
 function watch() {
   browserSync.init({
     server: {
@@ -50,6 +64,7 @@ function watch() {
   gulp.watch(RootFolderName + '/js/*.js', reload);
 }
 
+// function for minify html
 function minifyHTML(cb) {
   gulp
       .src(RootFolderName+ '/*.html')
@@ -58,6 +73,8 @@ function minifyHTML(cb) {
   cb()
 }
 
+
+// function for uglify js
 function unglifyJs(cb) {
   gulp
       .src(jsSrc)
@@ -70,6 +87,7 @@ function unglifyJs(cb) {
   cb()
 }
 
+// function for concat css
 function concatCss(cb) {
   gulp
       .src(RootFolderName + '/css/*.css')
@@ -78,7 +96,7 @@ function concatCss(cb) {
   cb()
 }
 
-// Optimize Images
+// function for optimize Images
 function images() {
   return gulp
       .src(RootFolderName+"/images/**/*")
@@ -101,15 +119,19 @@ function images() {
       .pipe(gulp.dest("dist/img/"));
 }
 
+// function for movefont
 function moveFont() {
   return gulp.src(RootFolderName+ '/fonts/**/*')
       .pipe(gulp.dest('dist/fonts'));
 }
 
+
+// function for clean dist folder 
 function clean() {
   return del(['dist/']);
 }
 
+// export all function 
 exports.unglifyJs = unglifyJs;
 exports.concatCss = concatCss;
 exports.images = images;
@@ -117,8 +139,7 @@ exports.minifyHTML = minifyHTML;
 exports.moveFont = moveFont;
 exports.clean = clean;
 exports.style = style;
-
+// series of command for build 
 const build = gulp.series(clean, gulp.parallel(minifyHTML, concatCss, unglifyJs, moveFont, images));
-
 exports.watch = watch;
 exports.build = build;

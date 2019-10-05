@@ -1,3 +1,8 @@
+/*
+--------------------------
+Mixin for responsive fonts
+--------------------------
+*/
 
 // set the min breakpoint
 $break-min: 320px;
@@ -15,13 +20,11 @@ $break-diff: 1600;
   }
 }
 
-
-// font sizes
 // text fluid to 14px to 18px
 .text-sm {
   @include font-responsive(14px, 4);
-  font-family: 'Merriweather', serif;
 }
+
 // text fluid to 15px to 20px
 .text-sm {
   @include font-responsive(15px, 5);  
