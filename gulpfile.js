@@ -4,7 +4,8 @@
 * Description: Gulpfile.js for browser reloading and sass compiling, automation for compress/uglify html, css, and js
 */
 
-// import required gulp plugin 
+// import required
+// gulp plugin
 const gulp = require("gulp"),
     sass = require("gulp-sass"),
     postcss = require("gulp-postcss"),
@@ -32,7 +33,7 @@ let jsSrc = [
 ];
 
 
-// function for complie scss and autoprefixer
+// function for compile scss and auto-prefixed
 function style() {
   return (
       gulp
@@ -47,7 +48,7 @@ function style() {
   );
 }
 
-// function for reaload browser
+// function for reload browser
 function reload(cb) {
   browserSync.reload();
   cb();
@@ -65,6 +66,7 @@ function watch() {
   gulp.watch(RootFolderName + '/js/*.js', reload);
 }
 
+// FOR BUILD
 // function for minify html
 function minifyHTML(cb) {
   gulp
@@ -74,7 +76,7 @@ function minifyHTML(cb) {
   cb()
 }
 
-
+// FOR BUILD
 // function for uglify js
 function unglifyJs(cb) {
   gulp
@@ -88,6 +90,7 @@ function unglifyJs(cb) {
   cb()
 }
 
+// FOR BUILD
 // function for concat css
 function concatCss(cb) {
   gulp
@@ -97,6 +100,7 @@ function concatCss(cb) {
   cb()
 }
 
+// FOR BUILD
 // function for optimize Images
 function images() {
   return gulp
@@ -120,13 +124,15 @@ function images() {
       .pipe(gulp.dest("dist/img/"));
 }
 
+
+// FOR BUILD
 // function for movefont
 function moveFont() {
   return gulp.src(RootFolderName+ '/fonts/**/*')
       .pipe(gulp.dest('dist/fonts'));
 }
 
-
+// FOR BUILD
 // function for clean dist folder 
 function clean() {
   return del(['dist/']);

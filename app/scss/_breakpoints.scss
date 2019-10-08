@@ -1,5 +1,6 @@
-// Bootstrap responsive mixin
+// media query mixin
 
+// functions for getting breakpoints
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
   @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
@@ -19,6 +20,7 @@
   @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
 }
 
+// media query for min-width
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
@@ -30,6 +32,7 @@
   }
 }
 
+// media query for max width
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
@@ -41,6 +44,8 @@
   }
 }
 
+
+// media query for min and max width
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($lower, $breakpoints);
   $max: breakpoint-max($upper, $breakpoints);
@@ -60,6 +65,7 @@
   }
 }
 
+// media query for only min with and max width
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   $max: breakpoint-max($name, $breakpoints);
